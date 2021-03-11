@@ -1,38 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ChakraProvider } from "@chakra-ui/react";
+import Header from "./components/Header";
+import UserList from "./components/UserList";
+import "./App.css";
 
-
-interface User {
+export interface User {
   name: string;
   id: number;
 }
 
-const user: User = {
-  name: "Corey",
-  id: 0,
-};
+const userList: Array<User> = [
+  { id: 1, name: "Corey" },
+  { id: 2, name: "Bob" },
+  { id: 3, name: "Jim" },
+];
 
-function App() {
-  const helloWorld: string = 'hello world!'
-  return (
+const App = () => (
+  <ChakraProvider>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {helloWorld}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <UserList users={userList} />
     </div>
-  );
-}
+  </ChakraProvider>
+);
 
 export default App;
